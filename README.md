@@ -93,7 +93,7 @@ REFERENCE NO: 24900343
 #include <WiFi.h>
 
 char ssid[]="Redmi Note 13";
-char pass[]="simba@wifi";
+char pass[]="XXXX";
 
 const int Soil_pin = 25;  // Soil MOisture */ ADC CH2
 WiFiClient client;
