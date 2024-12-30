@@ -84,8 +84,66 @@ Prototype and build IoT systems without setting up servers or developing web sof
 ![image](https://github.com/user-attachments/assets/5beaf86c-0d5d-4b99-9c22-bb0351f487ab)
 
 # PROGRAM:
+```
+DEVELOPED BY:A PRANEYA
+REFERENCE NO: 24900343
+```
+```
+#include"ThingSpeak.h"
+#include <WiFi.h>
+
+char ssid[]="Redmi Note 13";
+char pass[]="simba@wifi";
+
+const int Soil_pin = 25;  // Soil MOisture */ ADC CH2
+WiFiClient client;
+unsigned long myChannelField = 2787772;
+const int ChannelField1 = 1 ; 
+const char *myWriteAPIKey="MVN54JU6P9E15FY8";
+void setup()
+{
+  Serial.begin(9600);
+  WiFi.mode(WIFI_STA);
+  ThingSpeak.begin(client);
+  delay(1000);
+}
+
+void loop()
+{
+  if(WiFi.status()!=WL_CONNECTED)
+  {
+    Serial.print("Attempting to connet to SSID: "); 
+    Serial.println(ssid);
+    while(WiFi.status() != WL_CONNECTED)
+    {
+      WiFi.begin(ssid, pass);
+      Serial.print(".");
+      delay(5000);
+    }
+    Serial.println("\nConnected");
+  }
+  int Soil_adc_val;
+  Soil_adc_val = analogRead(Soil_pin);  /* Read Temperature */
+  Serial.print("Soil Moisture Range = ");
+  Serial.println(Soil_adc_val);
+  delay(1000);
+  delay(1000);
+}
+```
+
 # CIRCUIT DIAGRAM:
+
+![soilSensor1](https://github.com/user-attachments/assets/35a4ce16-d428-4aeb-8be7-9ab6d5430cf8)
+
 # OUTPUT:
+
+![Screenshot 2024-12-30 140357](https://github.com/user-attachments/assets/f7f39f92-0baa-422b-a224-071d0b9f3ae0)
+
+
+
+![Screenshot 2024-12-30 140332](https://github.com/user-attachments/assets/f8f21f3b-7103-4468-bbe4-82d53890f9bb)
+
+
 # RESULT:
 Thus the soil moisture values are updated in the Thing speak cloud using ESP32 controller.
 
